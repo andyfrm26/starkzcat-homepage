@@ -2,12 +2,11 @@
   "root": true,
   "extends": "next", 
   "rules": {
-    "no-unused-vars": [
-      "error",
-      {
-        "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_"
-      }
-    ]
+    "react/no-usescaped-entities": "off",
+    "@typescript-eslint/quotes":"off",
+    "quotes":[0],
+    "avoidEscape": 0,
+    "allowTemplateLiterals": 0,
+    "no-useless-escape":0
   }
 }
