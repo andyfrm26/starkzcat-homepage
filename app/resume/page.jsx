@@ -7,9 +7,10 @@ import {
   FaReact,
   FaFigma,
   FaNodeJs,
+  FaLaravel,
   FaNode
 } from "react-icons/fa"
-import { SiTailwindcss, SiNextdotjs } from "react-icons/si"
+import { SiTailwindcss, SiNextdotjs, SiMysql } from "react-icons/si"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
   Tooltip,
@@ -22,8 +23,7 @@ import { motion } from "framer-motion"
 
 const about = {
   title: "About me",
-  description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum nesciunt a minus.",
+  description: "Here is my 'about'. Please, use it wisely :D",
   info: [
     {
       fieldName: "Name",
@@ -52,6 +52,10 @@ const about = {
     {
       fieldName: "Language",
       fieldValue: "Indonesian, English"
+    },
+    {
+      fieldName: "Career Aspiration",
+      fieldValue: "Full Stack Developer, Chief Technology Officer"
     }
   ]
 }
@@ -60,32 +64,31 @@ const experience = {
   icon: "/assets/resume/badge.svg",
   title: "My experience",
   description:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab perferendis nihil debitis.",
+    "Since I'm a fresh graduate, here are my experiences during my college life, including the Professional and Organizational experiences of mine.",
   items: [
     {
-      company: "Tech Solution Inc.",
-      position: "Full Stack Developer",
-      duration: "2022 - Present"
+      type: "Professional",
+      company: "Local Government Office",
+      position: "Web Developer Intern",
+      duration: "Jun - Aug 2023"
     },
     {
-      company: "Web Design Studio",
-      position: "Front-end Developer Intern",
-      duration: "2021"
+      type: "Organizational",
+      company: "Mosque Youth Unit",
+      position: "General Lead",
+      duration: "2023 - 2024"
     },
     {
-      company: "E-commerce Startup",
-      position: "Freelance Web Developer",
-      duration: "2020 - 2021"
+      type: "Organizational",
+      company: "Mosque Youth Unit",
+      position: "Staff of Preachment Program",
+      duration: "2022 - 2023"
     },
     {
-      company: "Tech Academy",
-      position: "Teaching Assistant",
-      duration: "2019 - 2020"
-    },
-    {
-      company: "Digital Agency",
-      position: "UI/UX Designer",
-      duration: "2018 - 2019"
+      type: "Organizational",
+      company: "Information System Student Association",
+      position: "Staff of Research and Development",
+      duration: "2021 - 2022"
     }
   ]
 }
@@ -93,8 +96,7 @@ const experience = {
 const education = {
   icon: "/assets/resume/cap.svg",
   title: "My education",
-  description:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab perferendis nihil debitis.",
+  description: "Here is my education history.",
   items: [
     {
       institution: "Brawijaya University",
@@ -108,40 +110,48 @@ const education = {
 const skills = {
   title: "My skills",
   description:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab perferendis nihil debitis.",
+    "Here are my skills set. Basically, it is a Front-end Development skills.",
   skillList: [
     {
       icon: <FaHtml5 />,
-      name: "html 5"
+      name: "HTML5"
     },
     {
       icon: <FaCss3 />,
-      name: "css 3"
+      name: "CSS3"
     },
     {
       icon: <FaJs />,
-      name: "javascript"
+      name: "Javascript"
     },
     {
       icon: <FaReact />,
-      name: "react.js"
+      name: "React.js"
     },
     {
       icon: <SiNextdotjs />,
-      name: "next.js"
+      name: "Next.js"
     },
     {
       icon: <SiTailwindcss />,
-      name: "tailwindcss"
+      name: "TailwindCSS"
     },
     {
-      icon: <FaNodeJs />,
-      name: "node.js"
+      icon: <FaLaravel />,
+      name: "Laravel"
     },
     {
-      icon: <FaFigma />,
-      name: "figma"
+      icon: <SiMysql />,
+      name: "MySQL"
     }
+    // {
+    //   icon: <FaNodeJs />,
+    //   name: "node.js"
+    // },
+    // {
+    //   icon: <FaFigma />,
+    //   name: "figma"
+    // }
   ]
 }
 
@@ -157,17 +167,39 @@ const Resume = () => {
     >
       <div className="container mx-auto">
         <Tabs
-          defaultValue="experience"
+          defaultValue="about"
           className="flex flex-col xl:flex-row gap-[60px]"
         >
           <TabsList className="flex flex-col w-full max-w-[300px] mx-auto xl:mx-0 gap-6">
+            <TabsTrigger value="about">About me</TabsTrigger>
             <TabsTrigger value="experience">Experience</TabsTrigger>
             <TabsTrigger value="education">Education</TabsTrigger>
             <TabsTrigger value="skills">Skills</TabsTrigger>
-            <TabsTrigger value="about">About me</TabsTrigger>
           </TabsList>
 
           <div className="min-h-[70vh] w-full">
+            <TabsContent
+              value="about"
+              className="w-full text-center xl:text-left"
+            >
+              <div className="flex flex-col gap-[30px]">
+                <h3 className="text-4xl font-bold">{about.title}</h3>
+                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+                  {about.description}
+                </p>
+                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] xl:max-w-full mx-auto xl:mx-0">
+                  {about.info.map((item, index) => (
+                    <li
+                      key={index}
+                      className="w-full flex items-center justify-center xl:justify-start gap-4"
+                    >
+                      <span className="text-white/60">{item.fieldName}</span>
+                      <span className="text-xl">{item.fieldValue}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </TabsContent>
             <TabsContent value="experience" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{experience.title}</h3>
@@ -181,7 +213,13 @@ const Resume = () => {
                         key={index}
                         className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
                       >
-                        <span className="text-accent">{item.duration}</span>
+                        <div className="flex gap-3">
+                          <span className="text-accent">{item.duration}</span>
+                          <span>|</span>
+                          <span className="text-white/60 font-thin">
+                            {item.type}
+                          </span>
+                        </div>
                         <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
                           {item.position}
                         </h3>
@@ -225,8 +263,10 @@ const Resume = () => {
             <TabsContent value="skills" className="w-full">
               <div className="flex flex-col gap-[30px]">
                 <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                  <h3>{skills.title}</h3>
-                  <p>{skills.description}</p>
+                  <h3 className="text-4xl font-bold">{skills.title}</h3>
+                  <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+                    {skills.description}
+                  </p>
                 </div>
                 <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
                   {skills.skillList.map((skill, index) => (
@@ -243,28 +283,6 @@ const Resume = () => {
                           </TooltipContent>
                         </Tooltip>
                       </TooltipProvider>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </TabsContent>
-            <TabsContent
-              value="about"
-              className="w-full text-center xl:text-left"
-            >
-              <div className="flex flex-col gap-[30px]">
-                <h3 className="text-4xl font-bold">{about.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
-                  {about.description}
-                </p>
-                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] xl:max-w-full mx-auto xl:mx-0">
-                  {about.info.map((item, index) => (
-                    <li
-                      key={index}
-                      className="w-full flex items-center justify-center xl:justify-start gap-4"
-                    >
-                      <span className="text-white/60">{item.fieldName}</span>
-                      <span className="text-xl">{item.fieldValue}</span>
                     </li>
                   ))}
                 </ul>
