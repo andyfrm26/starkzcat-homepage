@@ -21,7 +21,7 @@ const projects = [
     category: "frontend",
     title: "SIMABA Website",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora sit soluta cumque",
+      "It was a student orientation website of my faculty, and I worked in group of 7 great developers.",
     stack: [
       { name: "React" },
       { name: "TailwindCSS" },
@@ -37,18 +37,18 @@ const projects = [
     category: "fullstack",
     title: "BAPENDA Website",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora sit soluta cumque",
+      "This was my intern project at Local Government Office (BAPENDA), and being an 'indie' Full-stack for the first time.",
     stack: [{ name: "Bootstrap" }, { name: "Laravel" }, { name: "MySQL" }],
     image: "/assets/projects/bapenda.png",
-    live: "",
-    github: ""
+    live: "https://bapenda.jemberkab.go.id/",
+    github: "https://github.com/starkzcat/bapenda-website"
   },
   {
     num: "03",
     category: "fullstack",
     title: "WOWSI Website",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora sit soluta cumque",
+      "It was also a student orientation website, but it's for the study program (prodi). Worked in group of 3.",
     stack: [{ name: "Bootstrap" }, { name: "CodeIgniter" }, { name: "MySQL" }],
     image: "/assets/projects/wowsi.png",
     live: "",
@@ -59,10 +59,10 @@ const projects = [
     category: "frontend",
     title: "ISOMETRIX Website",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora sit soluta cumque",
+      "ISOMETRIX stands for 'Information System Entrepreneur and IT Expo', and it was a website for the registration to the event.",
     stack: [
-      { name: "HTML 5" },
-      { name: "CSS 3" },
+      { name: "HTML5" },
+      { name: "CSS3" },
       { name: "Javascript" },
       { name: "CodeIgniter" }
     ],
@@ -77,7 +77,7 @@ const Projects = () => {
 
   const handleSlideChange = swiper => {
     // get current slide index
-    const currentIndex = swiper.activeIndex
+    const currentIndex = swiper.realIndex
     // update project state based on current slide index
     setProject(projects[currentIndex])
   }
@@ -126,8 +126,7 @@ const Projects = () => {
               {/* border */}
               <div className="border border-white/20"></div>
               {/* buttons */}
-              <div className="flex items-center gap-4">
-                {/* live project button */}
+              {/* <div className="flex items-center gap-4">
                 <Link href={project.live}>
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
@@ -140,7 +139,6 @@ const Projects = () => {
                     </Tooltip>
                   </TooltipProvider>
                 </Link>
-                {/* github project button */}
                 <Link href={project.github}>
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
@@ -153,7 +151,7 @@ const Projects = () => {
                     </Tooltip>
                   </TooltipProvider>
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="w-full xl:w-[50%]">
@@ -162,6 +160,7 @@ const Projects = () => {
               slidesPerView={1}
               className="xl:h-[520px] mb-12"
               onSlideChange={handleSlideChange}
+              loop={true}
             >
               {projects.map((project, index) => (
                 <SwiperSlide key={index} className="w-full">

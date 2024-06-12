@@ -14,14 +14,9 @@ import {
   SelectValue
 } from "@/components/ui/select"
 
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa"
+import { FaEnvelope, FaMapMarkerAlt } from "react-icons/fa"
 
 const info = [
-  {
-    icon: <FaPhoneAlt />,
-    title: "Phone",
-    description: "(+62) 821 3244 0054"
-  },
   {
     icon: <FaEnvelope />,
     title: "Email",
@@ -50,21 +45,39 @@ const Contact = () => {
         <div className="flex flex-col xl:flex-row gap-[30px]">
           {/* form */}
           <div className="xl:w-[54%] order-2 xl:order-none">
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <form
+              action="https://formsubmit.co/andyfirmansyah2667@gmail.com"
+              method="POST"
+              className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
+            >
               <h3 className="text-4xl text-accent">Let&apos;s work together</h3>
               <p className="text-white/60">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
-                aliquid quo dolorem quidem laboriosam incidunt debitis
-                assumenda. Accusamus atque blanditiis.
+                If you want to connect with me, please don&apos;t hesitate to
+                contact me below!
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firstname" placeholder="First name" />
-                <Input type="lastname" placeholder="Last name" />
-                <Input type="email" placeholder="Email" />
-                <Input type="phone" placeholder="Phone number" />
+                <Input
+                  type="firstname"
+                  name="First name"
+                  placeholder="First name"
+                  required
+                />
+                <Input
+                  type="lastname"
+                  name="Last name"
+                  placeholder="Last name"
+                  required
+                />
+                <Input type="email" name="Email" placeholder="Email" required />
+                <Input
+                  type="phone"
+                  name="Phone number"
+                  placeholder="Phone number"
+                  required
+                />
               </div>
 
-              <Select>
+              {/* <Select>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
@@ -76,11 +89,13 @@ const Contact = () => {
                     <SelectItem value="mst">Logo Design</SelectItem>
                   </SelectGroup>
                 </SelectContent>
-              </Select>
+              </Select> */}
 
               <Textarea
                 className="h-[200px]"
                 placeholder="Type your message here"
+                name="Message"
+                required
               />
 
               <Button size="md" className="max-w-40">
